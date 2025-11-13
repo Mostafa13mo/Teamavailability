@@ -1,71 +1,92 @@
 # Teamavailability
 
-A web application for managing and visualizing team availability. Built with JavaScript, HTML, and CSS, and ready for container-based deployment via Docker.
+Teamavailability is a web-based application designed to streamline scheduling and improve team coordination. Built with modern web technologies and featuring automated deployment with Docker and Kubernetes.
 
 ## Features
 
-- View and manage team member schedules
-- Interactive UI for editing availability
-- Responsive design for desktop and mobile
-- Containerized with Docker for easy deployment
+- **Real-time Availability Tracking:** Members can update and view team schedules instantly.
+- **Responsive Web Interface:** Built using JavaScript, HTML, and CSS.
+- **Automated Deployment:** Docker configuration and ready-to-use Kubernetes manifests.
+- **Easy Operation:** Shell scripts to start and stop the app locally or in the cloud.
+- **Persistent Storage:** Kubernetes PV/PVC support.
 
-## Technology Stack
+## Language Composition
 
-- **JavaScript:** Main application logic
-- **HTML/CSS:** User interface and styling
-- **Shell scripts:** Automation and setup tasks
-- **Dockerfile:** Containerization support
+- **JavaScript:** 58.9%
+- **CSS:** 15.9%
+- **Shell:** 11.2%
+- **HTML:** 10%
+- **Dockerfile:** 4%
 
-## Getting Started
+## Deployment Options
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) installed
-- [Docker](https://www.docker.com/get-started) (for container deployment)
-- Basic shell environment (for setup scripts, if needed)
-
-### Local Development
+### Local Installation
 
 ```bash
 git clone https://github.com/Mostafa13mo/Teamavailability.git
 cd Teamavailability
-
-# Install dependencies (if using npm/yarn)
 npm install
-
-# Start local server (update according to actual start script)
 npm start
 ```
 
-Then open your browser to `http://localhost:3000` (update port if necessary).
+### Using Shell Scripts
 
-### Using Docker
+In `scripts/`:
 
-Build and run the container:
+- **start.sh:** Bash script to start the application.
+- **stop.sh:** Bash script to stop the application.
+
+```bash
+# To start the application
+bash scripts/start.sh
+
+# To stop the application
+bash scripts/stop.sh
+```
+
+### Docker
 
 ```bash
 docker build -t teamavailability .
 docker run -p 3000:3000 teamavailability
 ```
 
-### Shell Scripts
+### Kubernetes
 
-Any shell scripts for setup or deployment are in the `scripts/` directory (if present). Make sure scripts are executable:
+The `k8s/` folder contains comprehensive Kubernetes manifests:
+
+- **deployment.yaml:** Deploys the application pods.
+- **service.yaml:** Configures service networking and exposes your app.
+- **ingress.yaml:** Exposes the service externally using Ingress rules.
+- **pv-pvc.yaml:** Manages persistent storage using Persistent Volume and Persistent Volume Claim.
+
+To deploy:
 
 ```bash
-chmod +x scripts/*.sh
+kubectl apply -f k8s/pv.yaml      # Persistent storage
+kubectl apply -f k8s/deployment.yaml # App deployment
+kubectl apply -f k8s/service.yaml    # Networking service
+kubectl apply -f k8s/ingress.yaml    # External access via Ingress
 ```
 
-## Project Structure
+Check app status and endpoints:
+```bash
+kubectl get all
+kubectl get ingress
+```
+
+## Folder Structure
 
 ```
-├── src/                # JavaScript source files
-├── public/             # HTML, CSS, and static assets
-├── scripts/            # Shell automation scripts
-├── Dockerfile          # Container instructions
-└── README.md           # This file
+/
+├── src/                # Application source code
+├── public/             # Static assets
+├── scripts/            # Bash scripts: start.sh, stop.sh
+├── k8s/                # Kubernetes manifests: deployment.yaml, service.yaml, ingress.yaml, pv-pvc.yaml
+├── Dockerfile          # Docker configuration
+├── package.json        # Node.js dependencies
 ```
 
 ## Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+Issues and pull requests are welcome!
