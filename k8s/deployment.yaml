@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamavail
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: teamavail
+  template:
+    metadata:
+      labels:
+        app: teamavail
+    spec:
+      containers:
+      - name: teamavail
+        image: teamavail:local
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: output
+          mountPath: /app/output
+      volumes:
+      - name: output
+        persistentVolumeClaim:
+          claimName: teamavail-pvc

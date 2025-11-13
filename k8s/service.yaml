@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: teamavail
+spec:
+  type: ClusterIP
+  selector:
+    app: teamavail
+  ports:
+    - port: 80
+      targetPort: 3000
