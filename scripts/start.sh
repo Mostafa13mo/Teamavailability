@@ -20,4 +20,4 @@ minikube addons enable ingress
 IP=$(minikube ip)
 echo "Add this entry to your /etc/hosts if not already present:"
 echo "$IP teamavail.local"
-echo "App will be available at: http://teamavail.local/"
+echo "Application will be available at: http://teamavail.local/"
