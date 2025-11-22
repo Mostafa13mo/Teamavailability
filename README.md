@@ -4,7 +4,7 @@ Teamavailability is a web-based application designed to streamline scheduling an
 
 ## Features
 
-- **Real-time Availability Tracking:** Members can update and view team schedules instantly.
+- **Real-time Availability Team Tracking:** Members can update and view team schedules instantly.
 - **Responsive Web Interface:** Built using JavaScript, HTML, and CSS.
 - **Automated Deployment:** Docker configuration and ready-to-use Kubernetes manifests.
 - **Easy Operation:** Shell scripts to start and stop the app locally or in the cloud.
