@@ -1,4 +1,4 @@
-# Build stage
+# Building stage
 FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
@@ -13,4 +13,5 @@ COPY --from=build /app .
 RUN chown -R nodeapp:nodeapp /app
 USER nodeapp
 EXPOSE 3000
+
 CMD ["node", "server.js"]
