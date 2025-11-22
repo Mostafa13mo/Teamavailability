@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: teamavail
+  name: teamavailability
 spec:
   replicas: 2
   selector:
@@ -24,4 +24,5 @@ spec:
       volumes:
       - name: output
         persistentVolumeClaim:
+
           claimName: teamavail-pvc
