@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: teamavail-pv
+  name: teamavailability-pv
 spec:
   capacity:
     storage: 1Gi
@@ -13,10 +13,11 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: teamavail-pvc
+  name: teamavailability-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
+
       storage: 1Gi
